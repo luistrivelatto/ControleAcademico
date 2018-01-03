@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <Switch
+        android:id="@+id/form_frequencia_presenca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:textSize="18sp"
+        android:padding="4dp"
+        android:text="Presente" />
+
+    <EditText
+        android:id="@+id/form_frequencia_observacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine|textCapSentences"
+        android:hint="Observacoes" />
+
+    <EditText
+        android:id="@+id/form_frequencia_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Data (dd.mm)" />
+
+    <EditText
+        android:id="@+id/form_frequencia_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time" />
+
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+    
+    <TextView
+        android:id="@+id/nome_avaliacao"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:text="Trabalho X"/>
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:text="14/8"/>
+
+    <TextView
+        android:id="@+id/escala"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="100"/>
+
+
+    <TextView
+        android:id="@+id/nota"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="90"/>
+
+</LinearLayout>

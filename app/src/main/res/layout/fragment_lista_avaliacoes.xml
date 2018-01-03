@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/media"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="Média: 0"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/button_add_avaliacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_add_circle_outline_black_24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#303030"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Avaliação"/>
+
+        <TextView
+            android:id="@+id/horario"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Data"/>
+
+        <TextView
+            android:id="@+id/presenca"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Escala"/>
+
+        <TextView
+            android:id="@+id/observacoes"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Nota"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lista_avaliacoes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="2dp"/>
+
+</LinearLayout>

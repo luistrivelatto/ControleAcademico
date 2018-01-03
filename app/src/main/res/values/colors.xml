@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="frequenciaPresente">#6fd66f</color>
+    <color name="frequenciaAusente">#f77773</color>
+    <color name="itemNaoSelecionado">#FFFFFF</color>
+    <color name="itemSelecionado">#bebebe</color>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/form_avaliacao_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textCapSentences"
+        android:hint="Nome"/>
+
+    <EditText
+        android:id="@+id/form_avaliacao_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Data (dd.mm)" />
+
+    <EditText
+        android:id="@+id/form_avaliacao_escala"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="Escala" />
+
+    <EditText
+        android:id="@+id/form_avaliacao_peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="Peso" />
+
+</LinearLayout>

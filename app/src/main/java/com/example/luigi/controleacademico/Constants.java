@@ -5,11 +5,15 @@ import android.support.v4.content.res.ResourcesCompat;
 
 import junit.framework.Assert;
 
+import java.util.Locale;
+
 /**
  * Created by Luigi on 02/01/2018.
  */
 
 public class Constants {
+
+    public static final Locale LOCALE_BRAZIL = new Locale("pt", "BR");
 
     public static final int corFrequenciaPresente = 0xFF6fd66f;
     public static final int corFrequenciaAusente = 0xFFf77773;

@@ -2,7 +2,10 @@ package com.example.luigi.controleacademico.UI;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,12 +28,14 @@ import com.example.luigi.controleacademico.BD.BDCore;
 import com.example.luigi.controleacademico.Model.Disciplina;
 import com.example.luigi.controleacademico.R;
 
+import java.util.Calendar;
 import java.util.TreeSet;
 
 public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvaliacao.DialogNovaAvaliacaoListener,
         DialogAlterarNota.DialogAlterarNotaListener {
 
     int idDisciplina;
+    String nomeDisciplina;
     BDCore bd;
 
     View root;
@@ -103,6 +108,7 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
 
     void updateUI() {
         Disciplina disc = bd.getDisciplina(idDisciplina);
+        nomeDisciplina = disc.getNome();
 
         tvMedia.setText("Média: " + Math.round(disc.calcularMedia()));
 
@@ -115,13 +121,37 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
     @Override
     public void onDialogPositiveClick(DialogNovaAvaliacao dialog) {
         if(dialog.checkForm()) {
-            bd.insertAvaliacao(dialog.getAvaliacao(), idDisciplina);
+            final Avaliacao av = dialog.getAvaliacao();
+            bd.insertAvaliacao(av, idDisciplina);
+
+            new AlertDialog.Builder(getContext())
+                    .setMessage("Avaliação criada com sucesso! Deseja adicionar ao calendário?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            inserirAvaliacaoCalendar(av);
+                        }
+                    })
+                    .setNegativeButton("Não", null)
+                    .show();
+
             updateUI();
         } else {
             String mensagem = dialog.getErros();
             new AlertDialog.Builder(getContext()).setMessage(mensagem).setPositiveButton("Voltar", null).show();
         }
+    }
 
+    void inserirAvaliacaoCalendar(Avaliacao av) {
+        Calendar time = Calendar.getInstance();
+        time.set(av.getData().getAno(), av.getData().getMes() - 1, av.getData().getDia(), 8, 0);
+
+        Intent calendarIntent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.TITLE, av.getNome() + " - " + nomeDisciplina)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, time.getTimeInMillis());
+
+        startActivity(calendarIntent);
     }
 
     @Override

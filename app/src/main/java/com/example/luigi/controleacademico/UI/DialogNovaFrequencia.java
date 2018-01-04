@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.example.luigi.controleacademico.Constants.LOCALE_BRAZIL;
+
 /**
  * Created by Luigi on 01/01/2018.
  */
@@ -56,11 +58,10 @@ public class DialogNovaFrequencia extends DialogFragment {
 
         view = inflater.inflate(R.layout.dialog_nova_frequencia,null);
 
-        Locale locale = new Locale("pt", "BR");
-        String strData = new SimpleDateFormat("dd.MM", locale).format(Calendar.getInstance().getTime());
+        String strData = new SimpleDateFormat("dd.MM", LOCALE_BRAZIL).format(Calendar.getInstance().getTime());
         ((EditText) view.findViewById(R.id.form_frequencia_data)).setText(strData);
 
-        String strHorario = new SimpleDateFormat("HH:mm", locale).format(Calendar.getInstance().getTime());
+        String strHorario = new SimpleDateFormat("HH:mm", LOCALE_BRAZIL).format(Calendar.getInstance().getTime());
         ((EditText) view.findViewById(R.id.form_frequencia_horario)).setText(strHorario);
 
         builder.setView(view).

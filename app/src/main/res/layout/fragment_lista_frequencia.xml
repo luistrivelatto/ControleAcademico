@@ -43,32 +43,39 @@
         android:padding="10dp">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="14"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
             android:text="Data"/>
 
         <TextView
-            android:layout_width="64dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="19"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
             android:text="Horário"/>
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="14"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
             android:text="Freq"/>
 
         <TextView
-            android:layout_width="176dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="53"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"

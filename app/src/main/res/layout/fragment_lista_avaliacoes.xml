@@ -35,39 +35,54 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/data"
-            android:layout_width="195dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="47"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:text="Avaliação"/>
 
         <TextView
-            android:id="@+id/horario"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="12.5"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
             android:text="Data"/>
 
         <TextView
-            android:id="@+id/presenca"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="12.5"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:text="Peso"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:layout_gravity="center_vertical"
             android:text="Escala"/>
 
         <TextView
-            android:id="@+id/observacoes"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="12.5"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textAlignment="center"
             android:text="Nota"/>
 
     </LinearLayout>

@@ -226,6 +226,7 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
 
             ((TextView) convertView.findViewById(R.id.nome_avaliacao)).setText(av.getNome());
             ((TextView) convertView.findViewById(R.id.data)).setText(av.getData().string_dd_mm());
+            ((TextView) convertView.findViewById(R.id.peso)).setText("" + Math.round(av.getPeso()));
             ((TextView) convertView.findViewById(R.id.escala)).setText("" + Math.round(av.getEscala()));
             ((TextView) convertView.findViewById(R.id.nota)).setText(av.isRealizada() ? "" + Math.round(av.getNota()) : "");
 

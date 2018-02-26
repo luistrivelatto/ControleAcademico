@@ -8,27 +8,44 @@
     
     <TextView
         android:id="@+id/nome_avaliacao"
-        android:layout_width="195dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="47"
         android:text="Trabalho X"/>
 
     <TextView
         android:id="@+id/data"
-        android:layout_width="65dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="12.5"
+        android:layout_gravity="center_vertical"
+        android:textAlignment="center"
         android:text="14/8"/>
 
     <TextView
-        android:id="@+id/escala"
-        android:layout_width="50dp"
+        android:id="@+id/peso"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="100"/>
+        android:layout_weight="12.5"
+        android:layout_gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="20"/>
 
+    <TextView
+        android:id="@+id/escala"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:layout_gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="100"/>
 
     <TextView
         android:id="@+id/nota"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="12.5"
+        android:textAlignment="center"
         android:text="90"/>
 
 </LinearLayout>

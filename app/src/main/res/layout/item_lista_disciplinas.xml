@@ -8,27 +8,34 @@
     
     <TextView
         android:id="@+id/nome"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="58"
         android:text="Redes"/>
 
     <TextView
         android:id="@+id/faltas"
-        android:layout_width="40dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="16"
+        android:textAlignment="center"
         android:text="25"/>
 
     <TextView
         android:id="@+id/max_faltas"
-        android:layout_width="40dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="12"
+        android:textAlignment="center"
         android:text="37"/>
 
 
     <TextView
         android:id="@+id/media"
-        android:layout_width="40dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="14"
+        android:textAlignment="center"
         android:text="55"/>
 
 </LinearLayout>

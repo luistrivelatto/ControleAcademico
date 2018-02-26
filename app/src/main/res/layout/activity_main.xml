@@ -16,46 +16,52 @@
         android:padding="14dp">
 
         <TextView
-            android:layout_width="185dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="58"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:text="Disciplina"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="16"
             android:textAllCaps="true"
             android:textStyle="bold"
+            android:textSize="12sp"
             android:textColor="@android:color/white"
-            android:layout_marginLeft="6dp"
+            android:textAlignment="center"
             android:text="Faltas"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="12"
             android:textAllCaps="true"
             android:textStyle="bold"
+            android:textSize="12sp"
             android:textColor="@android:color/white"
-            android:layout_marginLeft="6dp"
+            android:textAlignment="center"
             android:text="Máx."/>
 
-
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="14"
             android:textAllCaps="true"
             android:textStyle="bold"
+            android:textSize="12sp"
             android:textColor="@android:color/white"
-            android:layout_marginLeft="6dp"
+            android:textAlignment="center"
             android:text="Média"/>
 
     </LinearLayout>
 
     <ListView
         android:id="@+id/lista_disciplinas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

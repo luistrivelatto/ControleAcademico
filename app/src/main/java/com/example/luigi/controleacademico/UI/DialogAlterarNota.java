@@ -2,10 +2,10 @@ package com.example.luigi.controleacademico.UI;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -50,6 +50,20 @@ public class DialogAlterarNota extends DialogFragment {
         } catch(ClassCastException e) {
             throw new ClassCastException(getTargetFragment().toString() + " must implement DialogAlterarNotaListener");
         }
+    }
+
+    // Na primeira vez em que o Dialog é mostrado, o callback é setado no método 'onAttach'.
+    // Nas vezes seguintes (por exemplo, após rotacionar o celular), o fragment pai (no caso, ListaAvaliacoesFragment)
+    // confere se o Dialog existe no FragmentManager; se sim, o fragment pai se coloca como callback chamando 'setCallback'.
+    // É uma gambiarra? Pra mim toda essa forma de comunicação usando targetFragment é uma gambiarra, mas é assim
+    // que o developer.android.com recomenda. Dentro disso achei essa solução até elegante.
+    public void setCallback(DialogAlterarNotaListener callback) {
+        this.callback = callback;
+
+        // O TargetFragment do dialog é um Fragment que foi invalidado (por exemplo devido a rotação), então
+        // precisamos setar como null para que o app não crashe ao salvar o estado do dialog
+        // procurando o Fragment invalidado no Fragment Manager
+        setTargetFragment(null, 0);
     }
 
     @Override

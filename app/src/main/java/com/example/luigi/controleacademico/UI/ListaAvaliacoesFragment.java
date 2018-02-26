@@ -9,6 +9,7 @@ import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,9 +23,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.luigi.controleacademico.BD.BDCore;
 import com.example.luigi.controleacademico.Constants;
 import com.example.luigi.controleacademico.Model.Avaliacao;
-import com.example.luigi.controleacademico.BD.BDCore;
 import com.example.luigi.controleacademico.Model.Disciplina;
 import com.example.luigi.controleacademico.R;
 
@@ -51,6 +52,8 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
     }
 
     private static final String ARGUMENT_ID_DISCIPLINA = "ARGUMENT_ID_DISCIPLINA";
+    private static final String TAG_DIALOG_NOVA_AVALIACAO = "TAG_DIALOG_NOVA_AVALIACAO";
+    private static final String TAG_DIALOG_ALTERAR_NOTA = "TAG_DIALOG_ALTERAR_NOTA";
 
     public static ListaAvaliacoesFragment newInstance(int idDisciplina) {
         ListaAvaliacoesFragment fragment = new ListaAvaliacoesFragment();
@@ -78,7 +81,7 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
             public void onClick(View v) {
                 DialogNovaAvaliacao dialog = DialogNovaAvaliacao.newInstance();
                 dialog.setTargetFragment(ListaAvaliacoesFragment.this, 0);
-                dialog.show(getActivity().getSupportFragmentManager(), "DialogNovaAvaliacao");
+                dialog.show(getActivity().getSupportFragmentManager(), TAG_DIALOG_NOVA_AVALIACAO);
             }
         });
 
@@ -94,7 +97,7 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
                 Avaliacao av = (Avaliacao) parent.getItemAtPosition(position);
                 DialogAlterarNota dialog = DialogAlterarNota.newInstance(position, av.getNome());
                 dialog.setTargetFragment(ListaAvaliacoesFragment.this, 0);
-                dialog.show(getActivity().getSupportFragmentManager(), "DialogAlterarNota");
+                dialog.show(getActivity().getSupportFragmentManager(), TAG_DIALOG_ALTERAR_NOTA);
             }
         });
 
@@ -104,6 +107,26 @@ public class ListaAvaliacoesFragment extends Fragment implements DialogNovaAvali
         updateUI();
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Se a activity foi recriada (por exemplo celular rotacionou), precisamos atualizar
+        // a referência dos dialogs (que são persistidos pelo FragmentManager) para o novo fragment
+        // ListaAvaliacoes. Ver comentários em 'DialogAlterarNota'
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+
+        DialogAlterarNota dialogAlterarNota = (DialogAlterarNota) fm.findFragmentByTag(TAG_DIALOG_ALTERAR_NOTA);
+        if(dialogAlterarNota != null) {
+            dialogAlterarNota.setCallback(this);
+        }
+
+        DialogNovaAvaliacao dialogNovaAvaliacao = (DialogNovaAvaliacao) fm.findFragmentByTag(TAG_DIALOG_NOVA_AVALIACAO);
+        if(dialogNovaAvaliacao != null) {
+            dialogNovaAvaliacao.setCallback(this);
+        }
     }
 
     void updateUI() {

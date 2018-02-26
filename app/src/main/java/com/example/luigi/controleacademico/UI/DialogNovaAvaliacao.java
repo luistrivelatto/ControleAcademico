@@ -45,6 +45,11 @@ public class DialogNovaAvaliacao extends DialogFragment {
         }
     }
 
+    public void setCallback(DialogNovaAvaliacaoListener callback) {
+        this.callback = callback;
+        setTargetFragment(null, 0);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

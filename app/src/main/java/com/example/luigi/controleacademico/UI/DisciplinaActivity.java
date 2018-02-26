@@ -14,6 +14,7 @@ import com.example.luigi.controleacademico.R;
 public class DisciplinaActivity extends AppCompatActivity {
 
     int idDisciplina;
+    BottomNavigationView navigation;
 
     private static final String EXTRA_ID_DISCIPLINA = "EXTRA_ID_DISCIPLINA";
     private static final String EXTRA_NOME_DISCIPLINA = "EXTRA_NOME_DISCIPLINA";
@@ -29,7 +30,7 @@ public class DisciplinaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disciplina);
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Intent intent = getIntent();
@@ -39,8 +40,12 @@ public class DisciplinaActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(intent.getStringExtra(EXTRA_NOME_DISCIPLINA));
         idDisciplina = intent.getIntExtra(EXTRA_ID_DISCIPLINA, 0);
+    }
 
-        navigation.setSelectedItemId(R.id.navigation_aulas);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        navigation.setSelectedItemId(navigation.getSelectedItemId());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

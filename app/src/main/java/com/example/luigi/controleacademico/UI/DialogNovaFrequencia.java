@@ -18,7 +18,6 @@ import com.example.luigi.controleacademico.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 import static com.example.luigi.controleacademico.Constants.LOCALE_BRAZIL;
 
@@ -48,6 +47,11 @@ public class DialogNovaFrequencia extends DialogFragment {
         } catch(ClassCastException e) {
             throw new ClassCastException(getTargetFragment().toString() + " must implement DialogNovaFrequenciaListener");
         }
+    }
+
+    public void setCallback(DialogNovaFrequenciaListener callback) {
+        this.callback = callback;
+        setTargetFragment(null, 0);
     }
 
     @NonNull

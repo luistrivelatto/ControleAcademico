@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -46,6 +47,7 @@ public class ListaFrequenciaFragment extends Fragment implements DialogNovaFrequ
     }
 
     private static final String ARGUMENT_ID_DISCIPLINA = "ARGUMENT_ID_DISCIPLINA";
+    private static final String TAG_DIALOG_NOVA_FREQUENCIA = "TAG_DIALOG_NOVA_FREQUENCIA";
 
     public static ListaFrequenciaFragment newInstance(int idDisciplina) {
         ListaFrequenciaFragment fragment = new ListaFrequenciaFragment();
@@ -74,7 +76,7 @@ public class ListaFrequenciaFragment extends Fragment implements DialogNovaFrequ
             public void onClick(View v) {
                 DialogNovaFrequencia dialog = DialogNovaFrequencia.newInstance();
                 dialog.setTargetFragment(ListaFrequenciaFragment.this, 0);
-                dialog.show(getActivity().getSupportFragmentManager(), "DialogNovaFrequencia");
+                dialog.show(getActivity().getSupportFragmentManager(), TAG_DIALOG_NOVA_FREQUENCIA);
             }
         });
 
@@ -101,6 +103,18 @@ public class ListaFrequenciaFragment extends Fragment implements DialogNovaFrequ
         updateUI();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+
+        DialogNovaFrequencia dialogNovaFrequencia = (DialogNovaFrequencia) fm.findFragmentByTag(TAG_DIALOG_NOVA_FREQUENCIA);
+        if(dialogNovaFrequencia != null) {
+            dialogNovaFrequencia.setCallback(this);
+        }
     }
 
     void updateUI() {

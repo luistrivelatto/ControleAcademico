@@ -20,8 +20,10 @@ import java.util.List;
 
 public class BDCore extends SQLiteOpenHelper {
 
+    private static final boolean DEBUG_POPULATE_DATABASE = false;
+
     private static final String NOME_BD = "controle";
-    private static final int VERSAO_BD = 19;
+    private static final int VERSAO_BD = 20;
 
     public BDCore(Context ctx) {
         super(ctx, NOME_BD, null, VERSAO_BD);
@@ -41,9 +43,11 @@ public class BDCore extends SQLiteOpenHelper {
         bd.execSQL(AvaliacaoBD.CREATE_TABLE);
         bd.execSQL(FrequenciaBD.CREATE_TABLE);
 
-        Disciplina[] disciplinas = arrayDisciplinasTeste();
-        for(Disciplina d : disciplinas) {
-            insertDisciplina(d, bd);
+        if(DEBUG_POPULATE_DATABASE) {
+            Disciplina[] disciplinas = arrayDisciplinasTeste();
+            for (Disciplina d : disciplinas) {
+                insertDisciplina(d, bd);
+            }
         }
     }
 

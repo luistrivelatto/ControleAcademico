@@ -3,7 +3,6 @@ package com.example.luigi.controleacademico.UI;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,14 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.luigi.controleacademico.Constants;
 import com.example.luigi.controleacademico.BD.BDCore;
+import com.example.luigi.controleacademico.Constants;
 import com.example.luigi.controleacademico.Model.Disciplina;
 import com.example.luigi.controleacademico.R;
 
 import java.util.TreeSet;
-
-import static com.example.luigi.controleacademico.Constants.assertConstants;
 
 public class MainActivity extends AppCompatActivity implements DialogNovaDisciplina.DialogNovaDisciplinaListener {
 
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements DialogNovaDiscipl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        assertConstants(getResources());
+        Constants.assertConstants(getResources());
 
         setContentView(R.layout.activity_main);
 
@@ -129,14 +126,22 @@ public class MainActivity extends AppCompatActivity implements DialogNovaDiscipl
 
             Disciplina disc = getItem(position);
 
-            TextView tvFaltas = convertView.findViewById(R.id.faltas);
             int faltas = disc.calcularFaltas();
+            int tvFaltasCor;
+
+            if(faltas > disc.getMaxFaltas()) {
+                tvFaltasCor = Constants.corNumFaltasEstorou;
+            } else if(faltas >= disc.getMaxFaltas() - 10) {
+                tvFaltasCor = Constants.corNumFaltasPertoLimite;
+            } else {
+                tvFaltasCor = Constants.corNumFaltasNormal;
+            }
 
             ((TextView) convertView.findViewById(R.id.nome)).setText(disc.getNome());
+
+            TextView tvFaltas = convertView.findViewById(R.id.faltas);
             tvFaltas.setText("" + faltas);
-            if(faltas >= disc.getMaxFaltas() - 10) {
-                tvFaltas.setTextColor(Color.rgb(186, 108, 0));
-            }
+            tvFaltas.setTextColor(tvFaltasCor);
 
             ((TextView) convertView.findViewById(R.id.faltas)).setText("" + disc.calcularFaltas());
             ((TextView) convertView.findViewById(R.id.max_faltas)).setText("" + disc.getMaxFaltas());

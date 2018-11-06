@@ -17,6 +17,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -134,6 +135,13 @@ public class ListaFrequenciaFragment extends Fragment implements DialogNovaFrequ
         if(dialog.checkForm()) {
             bd.insertFrequencia(dialog.getFrequencia(), idDisciplina);
             updateUI();
+
+            View view = getLayoutInflater().inflate(R.layout.dialog_imagem, null);
+            ((ImageView) view.findViewById(R.id.imagem_dialog)).setImageResource(
+                    dialog.getFrequencia().isFrequentou() ? R.mipmap.presenca : R.mipmap.falta
+            );
+            new AlertDialog.Builder(getContext()).setView(view).show();
+
         } else {
             String mensagem = dialog.getErros();
             new AlertDialog.Builder(getContext()).setMessage(mensagem).setPositiveButton("Voltar", null).show();
